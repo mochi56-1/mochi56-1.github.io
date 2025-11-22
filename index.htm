@@ -1,20 +1,288 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <title>Portfolio | Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* === 全体レイアウト === */
+    :root {
+      --bg-top: #f3fbff;
+      --bg-bottom: #f5f0ff;
+      --accent: #7c8cff;
+      --accent-soft: #c3c8ff;
+      --text-main: #222222;
+      --text-sub: #555555;
+      --card-bg: #ffffffcc;
+      --border-soft: #e2e4ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 40px;
-      background: #f0f0f0;
-      font-family: sans-serif;
-      text-align: center;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: var(--text-main);
+      background: linear-gradient(
+        180deg,
+        var(--bg-top),
+        var(--bg-bottom)
+      );
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    /* === Hero === */
+    header {
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: #ffffffaa;
+      border: 1px solid #e0e4ff;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
+    /* === セクション共通 === */
+    section {
+      margin-top: 32px;
+    }
+
+    section h2 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #555b88;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 20px;
+      box-shadow: 0 18px 40px rgba(40, 56, 120, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    /* === About === */
+    .about-body {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    /* === Skills === */
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #f7f7ff;
+      border: 1px solid #e0e4ff;
+      color: #444a88;
+    }
+
+    /* === Works === */
+    .works-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .work-title {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #eef0ff;
+      color: #555b88;
+    }
+
+    .work-desc {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .work-links {
+      margin-top: 6px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-link {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      color: var(--accent);
+      text-decoration: none;
+      background: #ffffffdd;
+    }
+
+    .btn-link:hover {
+      background: var(--accent-soft);
+      color: white;
+    }
+
+    /* === Links === */
+    .link-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .link-list a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .link-list a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    /* === レスポンシブ === */
+    @media (min-width: 720px) {
+      h1 {
+        font-size: 32px;
+      }
+      .subtitle {
+        font-size: 15px;
+      }
+      .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
   </style>
 </head>
 <body>
-  <h1>My Portfolio</h1>
-  <p>ここに作品を載せていきます！</p>
+  <div class="container">
+    <!-- Hero -->
+    <header>
+      <div class="badge">Portfolio</div>
+      <h1>Your Name</h1>
+      <p class="subtitle">
+        大学で経済学を学びながら、Webアプリやゲーム制作、幻想系の世界観デザインをしています。
+        技術とストーリー性のあるUIを組み合わせた作品づくりが好きです。
+      </p>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+      <h2>ABOUT</h2>
+      <div class="card">
+        <p class="about-body">
+京都の大学で経済学を専攻している学生です。
+Webアプリ制作・CG・ゲームデザインなど、世界観のあるデジタル作品づくりに興味があります。
+
+将来的には、クリエイティブとエンジニアリングの両方に関わる仕事を目指しています。
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>SKILLS / INTERESTS</h2>
+      <div class="card">
+        <div style="font-size:13px; color:var(--text-sub); margin-bottom:8px;">
+          触ったことがある / 勉強中の分野
+        </div>
+        <div class="chip-row">
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Python</span>
+          <span class="chip">Webアプリ開発</span>
+          <span class="chip">UIデザイン</span>
+          <span class="chip">基本情報技術者試験 勉強中</span>
+          <span class="chip">ゲーム制作</span>
+          <span class="chip">幻想系・ドリームコア世界観</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works">
+      <h2>WORKS</h2>
+      <div class="works-grid">
+        <!-- CORE ATLAS -->
+        <div class="card work-card">
+          <div class="work-title">
+            CORE ATLAS
+            <span class="tag">Web App</span>
+          </div>
+          <p class="work-desc">
+            Dreamcore / Weirdcore / Liminalcore など、10種類の「コア世界観」をカードとして眺める図鑑型Webアプリ。
+            現在デザインと実装を進めています。
+          </p>
+          <div class="work-links">
+            <!-- できたら /core-atlas/ に差し替え -->
+            <a href="#" class="btn-link">View (coming soon)</a>
+          </div>
+        </div>
+
+        <!-- 作品が増えたらここにカードを足していく -->
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links">
+      <h2>LINKS</h2>
+      <div class="card">
+        <div class="link-list">
+          <span>GitHub: <a href="https://github.com/USER_NAME" target="_blank">USER_NAME</a></span>
+          <!-- 他にあれば追加 -->
+        </div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
